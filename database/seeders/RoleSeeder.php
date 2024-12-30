@@ -20,7 +20,6 @@ class RoleSeeder extends Seeder
         $allPermissions = Permission::all()->pluck('id');
 
         $superAdminRole->permissions()->sync($allPermissions);
-        $adminRole->permissions()->sync([1,2,3,4,5,6,7,8,9,10,11,13,15,16,17,18,19,20,21,22,23,24]);
-        $employeeRole->permissions()->sync([16,20,21,24]);
+        $adminRole->permissions()->sync([1,2,3,4,5,6,7,8,9,10,11,13,15]);
     }
 }
