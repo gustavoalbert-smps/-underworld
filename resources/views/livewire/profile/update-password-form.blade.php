@@ -15,7 +15,7 @@ new class extends Component
     /**
      * Update the password for the currently authenticated user.
      */
-    public function updatePassword(): void
+    public function updatePassword()
     {
         try {
             $validated = $this->validate([
@@ -25,7 +25,7 @@ new class extends Component
         } catch (ValidationException $e) {
             $this->reset('current_password', 'password', 'password_confirmation');
 
-            throw $e;
+            return redirect('profile')->with('alert-danger', 'Erro ao atualizar sua senha: ' . $e);
         }
 
         Auth::user()->update([
@@ -34,7 +34,7 @@ new class extends Component
 
         $this->reset('current_password', 'password', 'password_confirmation');
 
-        $this->dispatch('password-updated');
+        return redirect('profile')->with('alert-success', 'Senha alterado com sucesso!');
     }
 }; ?>
 
