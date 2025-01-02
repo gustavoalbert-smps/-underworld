@@ -35,6 +35,14 @@ Route::middleware('auth')->group(function () {
             });
         });
     });
+
+    Route::prefix('user')->group(function () {
+        Route::name('admin.')->group(function() {
+            Route::controller(\App\Http\Controllers\Manage\UserController::class)->group(function () {
+                Route::get('/', 'index')->name('user.index');
+            });
+        });
+    });
 });
 
 require __DIR__.'/auth.php';
