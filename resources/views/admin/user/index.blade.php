@@ -34,14 +34,18 @@
                                         {{ $user->email }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        <a class="btn btn-{{$user->status != 1  ? 'success' : 'warning'}} btn-sm" href="{{ route('admin.role.edit', $user->id) }}">
-                                            @if ($user->status != 1)
-                                                <i class="bi bi-check-circle-fill"></i>
-                                            @else
-                                                <i class="bi bi-x-circle-fill"></i>
-                                            @endif
-                                        </a>
-                                        <a class="btn btn-primary btn-sm" href="{{ route('admin.role.edit', $user->id) }}">
+                                        <form action="{{ route('admin.user.toggle-status', $user->id) }}" method="POST" style="display: inline;">
+                                            @csrf
+                                            @method('PUT')
+                                            <button type="submit" class="btn btn-{{$user->status != 1 ? 'success' : 'warning'}} btn-sm" style="background-color:{{$user->status != 1 ? '#198754' : '#ffc107'}}">
+                                                @if ($user->status != 1)
+                                                    <i class="bi bi-check-circle-fill"></i>
+                                                @else
+                                                    <i class="bi bi-x-circle-fill"></i>
+                                                @endif
+                                            </button>
+                                        </form>
+                                        <a class="btn btn-primary btn-sm" href="{{ route('admin.user.edit', $user->id) }}">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
                                         <a class="btn btn-danger btn-sm" href="{{ route('admin.role.edit', $user->id) }}">

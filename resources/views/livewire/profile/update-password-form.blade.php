@@ -20,7 +20,17 @@ new class extends Component
         try {
             $validated = $this->validate([
                 'current_password' => ['required', 'string', 'current_password'],
-                'password' => ['required', 'string', Password::defaults(), 'confirmed'],
+                'password' => [
+                    'required',
+                    'string',
+                    Password::min(8) // Define comprimento mínimo
+                        ->mixedCase() // Requer letras maiúsculas e minúsculas
+                        ->numbers() // Requer pelo menos um número
+                        ->symbols() // Requer pelo menos um símbolo
+                        ->uncompromised(), // Verifica se a senha foi exposta em vazamentos de dados
+                    'confirmed',
+                ],
+                'password_confirmation' => ['required'],
             ]);
         } catch (ValidationException $e) {
             $this->reset('current_password', 'password', 'password_confirmation');
@@ -34,7 +44,7 @@ new class extends Component
 
         $this->reset('current_password', 'password', 'password_confirmation');
 
-        return redirect('profile')->with('alert-success', 'Senha alterado com sucesso!');
+        return redirect('profile')->with('alert-success', 'Senha alterada com sucesso!');
     }
 }; ?>
 

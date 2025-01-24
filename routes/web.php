@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Manage\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,12 +37,9 @@ Route::middleware('auth')->group(function () {
         });
     });
 
-    Route::prefix('user')->group(function () {
-        Route::name('admin.')->group(function() {
-            Route::controller(\App\Http\Controllers\Manage\UserController::class)->group(function () {
-                Route::get('/', 'index')->name('user.index');
-            });
-        });
+    Route::name('admin.')->group(function() {
+        Route::resource('user', UserController::class);
+        Route::put('/user/{id}/status', [UserController::class, 'toggleStatus'])->name('user.toggle-status');
     });
 });
 
