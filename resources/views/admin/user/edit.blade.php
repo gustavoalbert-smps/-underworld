@@ -13,6 +13,10 @@
                         <h2 class="text-lg font-medium text-gray-900">
                             {{ $user->name }}
                         </h2>
+
+                        <p class="mt-1 text-sm text-gray-600">
+                            {{ __("Enter password fields only if you want to change the user's password") }}
+                        </p>
                     </header>
 
                     <form method="POST" action="{{ route('admin.user.update', $user->id) }}" class="mt-6 space-y-6">
