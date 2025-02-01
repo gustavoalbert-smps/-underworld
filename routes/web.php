@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::view('admin-dashboard', 'dashboard')
+Route::view('admin-dashboard', 'admin-dashboard')
     ->middleware(['auth', 'verified'])
     ->name('admin-dashboard');
 
