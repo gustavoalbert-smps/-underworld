@@ -30,7 +30,7 @@
 						</button>
 						<ul id="dropdown-layouts" class="hidden py-2 space-y-2">
 							<li>
-								<a href="{{ "layouts/stacked/"  }}" class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Conversions</a>
+								<a href="{{route('conversions.index')}}" class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Conversions</a>
 							</li>
 							<li>
 								<a href="{{ "layouts/sidebar/"  }}" class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Emails</a>
