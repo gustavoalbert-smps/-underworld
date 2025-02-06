@@ -32,7 +32,7 @@
             @endif
 
             <!-- Page Content -->
-            <main class="max-w-screen-2xl">
+            <main class="w-10/12">
                 {{ $slot }}
             </main>
         </div>
