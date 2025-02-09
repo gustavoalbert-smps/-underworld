@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ConversionController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\Manage\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,8 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::resource('conversions', ConversionController::class);
+
+    Route::resource('files', FileController::class);
 
     Route::name('admin.')->group(function() {
         Route::resource('user', UserController::class);
